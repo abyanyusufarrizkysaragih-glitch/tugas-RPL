@@ -1,0 +1,27 @@
+def proses(n, t, k, member):
+    h = 0
+    if k == "standard":
+        h = 150000
+    elif k == "deluxe":
+        h = 300000
+    elif k == "suite":
+        h = 500000
+
+    total = h * t
+
+    if member == "platinum":
+        total = total - (total * 0.15)
+    elif member == "gold":
+        total = total - (total * 0.10)
+
+    pajak = total * 0.12
+    total = total + pajak
+
+    if t >= 3:
+        total = total - 50000
+
+    print("Nama: " + n)
+    print("Bayar: " + str(total))
+    return total
+
+proses("Budi", 3, "deluxe", "gold")
