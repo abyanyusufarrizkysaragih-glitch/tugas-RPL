@@ -1,0 +1,30 @@
+def hitung_reservasi_hotel(nama_tamu, jumlah_malam, tipe_kamar, status_member):
+    harga_per_malam = 0
+    if tipe_kamar == "standard":
+        harga_per_malam = 150000
+    elif tipe_kamar == "deluxe":
+        harga_per_malam = 300000
+    elif tipe_kamar == "suite":
+        harga_per_malam = 500000
+
+    total_harga = harga_per_malam * jumlah_malam
+
+    if status_member == "platinum":
+        print("Mendapat diskon member Platinum 15%")
+        total_harga = total_harga - (total_harga * 0.15)
+    elif status_member == "gold":
+        print("Mendapat diskon member Gold 10%")
+        total_harga = total_harga - (total_harga * 0.10)
+
+    pajak = total_harga * 0.12
+    total_harga = total_harga + pajak
+
+    if jumlah_malam >= 3:
+        print("Mendapat potongan menginap 3+ malam sebesar 50000")
+        total_harga = total_harga - 50000
+
+    print("Nama tamu: " + nama_tamu)
+    print("Total yang harus dibayar: " + str(total_harga))
+    return total_harga
+
+hitung_reservasi_hotel("Budi", 3, "deluxe", "gold")
